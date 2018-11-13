@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{397F2637-D548-4A17-886E-DC0361E8B0C4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Albert.CAD</RootNamespace>
+    <AssemblyName>Albert.CAD</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ControlzEx">
+      <HintPath>..\libs\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Fluent">
+      <HintPath>..\libs\Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Util\CommandRestart.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Analyze\Input.cs" />
+    <Compile Include="Analyze\Output.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Line Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PLine Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Polygon Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Rectangle Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Circle Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Arc Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Ellipse Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Wall Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Beam Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Column Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Tape Measure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Staff Setup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Text Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Move Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Copy Time.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Mirror.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Rotate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Align.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\draw_tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\New Scene.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Open File.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Start Parameter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\self_close_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlueLarge.png" />
+    <Resource Include="Resources\BrownLarge.png" />
+    <Resource Include="Resources\GreenLarge.png" />
+    <Resource Include="Resources\OrangeLarge.png" />
+    <Resource Include="Resources\PinkLarge.png" />
+    <Resource Include="Resources\RedLarge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Floor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Steel beam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Steel Member.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\OSB Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Rule Shape.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Index Shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\line_width.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\LineStyle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Line1.png" />
+    <Resource Include="Resources\Line2.png" />
+    <Resource Include="Resources\Line3.png" />
+    <Resource Include="Resources\Line4.png" />
+    <Resource Include="Resources\Line5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Line10.png" />
+    <Resource Include="Resources\Line20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dashed.png" />
+    <Resource Include="Resources\Solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\NWall.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CWall.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CircleColumn.png" />
+    <Resource Include="Resources\SquareColumn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sectionI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Array.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Reverse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TextEffects.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Pink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TextHighlightColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FontColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Albert.DrawingKernel\Albert.DrawingKernel.csproj">
+      <Project>{fd75e1d8-e185-48ce-82ec-8c6eac9c5051}</Project>
+      <Name>Albert.DrawingKernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Albert.Geometry\Albert.Geometry.csproj">
+      <Project>{90512a73-8c3a-47bf-84db-f6c489c3581b}</Project>
+      <Name>Albert.Geometry</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

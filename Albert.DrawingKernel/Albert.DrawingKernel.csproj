@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD75E1D8-E185-48CE-82EC-8C6EAC9C5051}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Albert.DrawingKernel</RootNamespace>
+    <AssemblyName>Albert.DrawingKernel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assistant\ActionTip.cs" />
+    <Compile Include="Assistant\BaseTip.cs" />
+    <Compile Include="Assistant\SubArcTip.cs" />
+    <Compile Include="Assistant\SubArrayCommandTip.cs" />
+    <Compile Include="Assistant\SubMirrorCommandTip.cs" />
+    <Compile Include="Assistant\SubMoveCommandTip.cs" />
+    <Compile Include="Assistant\SubOffsetCommandTip.cs" />
+    <Compile Include="Assistant\SubRotateCommandTip.cs" />
+    <Compile Include="Assistant\SubBeamTip.cs" />
+    <Compile Include="Assistant\SubCircleTip.cs" />
+    <Compile Include="Assistant\SubEllipseTip.cs" />
+    <Compile Include="Assistant\SubLegwireTip.cs" />
+    <Compile Include="Assistant\SublineTip.cs" />
+    <Compile Include="Assistant\SubMeasureTip.cs" />
+    <Compile Include="Assistant\SubPolygonTip.cs" />
+    <Compile Include="Assistant\SubPolylineTip.cs" />
+    <Compile Include="Assistant\SubRectangleTip.cs" />
+    <Compile Include="Assistant\SubTextTip.cs" />
+    <Compile Include="Assistant\SubWallTip.cs" />
+    <Compile Include="Assistant\TextTip.cs" />
+    <Compile Include="Commands\AlignCommand.cs" />
+    <Compile Include="Commands\ArrayCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\MeasureCommand.cs" />
+    <Compile Include="Commands\ReverseCommand.cs" />
+    <Compile Include="Commands\MirrorCommand.cs" />
+    <Compile Include="Commands\MoveCommand.cs" />
+    <Compile Include="Commands\OffsetCommand.cs" />
+    <Compile Include="Commands\RotateCommand.cs" />
+    <Compile Include="Controls\ContentControl.cs" />
+    <Compile Include="Controls\DistinguishingControl.cs" />
+    <Compile Include="Controls\DrawingControl.cs" />
+    <Compile Include="Controls\NumericBox.cs" />
+    <Compile Include="Events\ActionEventArgs.cs" />
+    <Compile Include="Events\CommandPromptEventArgs.cs" />
+    <Compile Include="Events\GeometryEventArgs.cs" />
+    <Compile Include="Events\MultiSelectedEventArgs.cs" />
+    <Compile Include="Events\PickedEventArgs.cs" />
+    <Compile Include="Events\RightMouseEventArgs.cs" />
+    <Compile Include="Events\SelectedEventArgs.cs" />
+    <Compile Include="Explorer.cs" />
+    <Compile Include="Filter\IPickFilter.cs" />
+    <Compile Include="Filter\TypeFilter.cs" />
+    <Compile Include="Functional\AddFunctional.cs" />
+    <Compile Include="Functional\BaseFunctional.cs" />
+    <Compile Include="Functional\CopyFunctional.cs" />
+    <Compile Include="Functional\FunctionalContext.cs" />
+    <Compile Include="Functional\MoveFunction.cs" />
+    <Compile Include="Functional\RemoveFunctional.cs" />
+    <Compile Include="Functional\RotateFunctional.cs" />
+    <Compile Include="Functional\ScaleFunctional.cs" />
+    <Compile Include="Geometries\Consult\CentralGeometry.cs" />
+    <Compile Include="Geometries\Consult\ImageGeometry.cs" />
+    <Compile Include="Geometries\Consult\MutilImageGeometry.cs" />
+    <Compile Include="Geometries\Consult\GridGeometry.cs" />
+    <Compile Include="Geometries\Geometry2D.cs" />
+    <Compile Include="Geometries\Primitives\ArcGeometry.cs" />
+    <Compile Include="Geometries\Primitives\BeamGeometry.cs" />
+    <Compile Include="Geometries\Primitives\LegwireGeometry.cs" />
+    <Compile Include="Geometries\Primitives\StaffGeometry.cs" />
+    <Compile Include="Geometries\Primitives\SteelColumnGeometry.cs" />
+    <Compile Include="Geometries\Primitives\ColumnGeometry.cs" />
+    <Compile Include="Geometries\Primitives\CircleGeometry.cs" />
+    <Compile Include="Geometries\Primitives\CSectionGeometry.cs" />
+    <Compile Include="Geometries\Primitives\EllipseGeometry.cs" />
+    <Compile Include="Geometries\Primitives\FloorGeometry.cs" />
+    <Compile Include="Geometries\Primitives\LineGeometry.cs" />
+    <Compile Include="Geometries\Primitives\MeasureGeometry.cs" />
+    <Compile Include="Geometries\Primitives\MemberGeometry.cs" />
+    <Compile Include="Geometries\Primitives\OSBGeometry.cs" />
+    <Compile Include="Geometries\Primitives\PointGeometry.cs" />
+    <Compile Include="Geometries\Primitives\PolygonGeometry.cs" />
+    <Compile Include="Geometries\Primitives\PolylineGeometry.cs" />
+    <Compile Include="Geometries\Primitives\RectangleGeometry.cs" />
+    <Compile Include="Geometries\Primitives\SteelBeamGeometry.cs" />
+    <Compile Include="Geometries\Primitives\SteelSupportGeometry.cs" />
+    <Compile Include="Geometries\Primitives\TextGeometry.cs" />
+    <Compile Include="Geometries\Primitives\WallGeometry.cs" />
+    <Compile Include="Geometries\Temporary\AngleGeometry.cs" />
+    <Compile Include="Geometries\Temporary\SelectLightGeometry.cs" />
+    <Compile Include="Geometries\Temporary\HightLightGeometry.cs" />
+    <Compile Include="Geometries\Temporary\SelectedGeometry.cs" />
+    <Compile Include="Geometries\Temporary\SelectingBox.cs" />
+    <Compile Include="Geometries\Temporary\SnapGeometry.cs" />
+    <Compile Include="Geometries\Temporary\SublineGeometry.cs" />
+    <Compile Include="Geometries\Temporary\PickedGeometry.cs" />
+    <Compile Include="PenAction\ArcAction.cs" />
+    <Compile Include="PenAction\ColumnAction.cs" />
+    <Compile Include="PenAction\LegwireAction.cs" />
+    <Compile Include="PenAction\StaffAction.cs" />
+    <Compile Include="PenAction\MemberAction.cs" />
+    <Compile Include="PenAction\SteelColumnAction.cs" />
+    <Compile Include="PenAction\SteelBeamAction.cs" />
+    <Compile Include="PenAction\BeamAction.cs" />
+    <Compile Include="PenAction\CircleAction.cs" />
+    <Compile Include="PenAction\EllipseAction.cs" />
+    <Compile Include="PenAction\IAction.cs" />
+    <Compile Include="PenAction\LineAction.cs" />
+    <Compile Include="PenAction\OSBAction.cs" />
+    <Compile Include="PenAction\FloorAction.cs" />
+    <Compile Include="PenAction\PolygonAction.cs" />
+    <Compile Include="PenAction\PolylineAction.cs" />
+    <Compile Include="PenAction\RectangleAction.cs" />
+    <Compile Include="PenAction\SteelSupportAction.cs" />
+    <Compile Include="PenAction\TextAction.cs" />
+    <Compile Include="PenAction\WallAction.cs" />
+    <Compile Include="Prompt\MessageTip.cs" />
+    <Compile Include="Prompt\TextTip.xaml.cs">
+      <DependentUpon>TextTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Selector\InterestPoint.cs" />
+    <Compile Include="Selector\IntersectGeometry.cs" />
+    <Compile Include="Selector\IntersectPointCatch.cs" />
+    <Compile Include="Selector\SelectionBoxCatch.cs" />
+    <Compile Include="Util\BindingBox.cs" />
+    <Compile Include="Util\CommandRestart.cs" />
+    <Compile Include="Util\CursorGetter.cs" />
+    <Compile Include="Util\KernelProperty.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Prompt\TextTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Cursor\aero_move.cur" />
+    <Resource Include="Resources\Cursor\command.cur" />
+    <Resource Include="Resources\Cursor\cross.cur" />
+    <Resource Include="Resources\Cursor\cursorpan.cur" />
+    <Resource Include="Resources\Cursor\pick.cur" />
+    <Resource Include="Resources\Cursor\select.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Albert.Geometry\Albert.Geometry.csproj">
+      <Project>{90512a73-8c3a-47bf-84db-f6c489c3581b}</Project>
+      <Name>Albert.Geometry</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

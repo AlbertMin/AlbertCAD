@@ -1,0 +1,281 @@
+﻿<Window x:Class="Albert.CAD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Albert.CAD"
+        xmlns:drawingKernel="clr-namespace:Albert.DrawingKernel;assembly=Albert.DrawingKernel"
+        xmlns:fluent="urn:fluent-ribbon"
+        mc:Ignorable="d"
+        Title="AlbertCAD" Height="768" Width="1000" WindowState="Maximized" WindowStartupLocation="CenterScreen" Loaded="RibbonWindow_Loaded">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" x:Name="New"  CanExecute="NewCommandBinding_CanExecute" Executed="NewCommandBinding_Executed" ></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Open" x:Name="Open"  CanExecute="OpenCommandBinding_CanExecute" Executed="OpenCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Save" x:Name="Save"  CanExecute="SaveCommandBinding_CanExecute" Executed="SaveCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.SaveAs" x:Name="SaveAS"  CanExecute="SaveASCommandBinding_CanExecute" Executed="SaveASCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Print" x:Name="Print"  CanExecute="PrintCommandBinding_CanExecute" Executed="PrintCommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Close" x:Name="CloseW"  CanExecute="CloseWCommandBinding_CanExecute" Executed="CloseWCommandBinding_Executed"></CommandBinding>
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <fluent:Ribbon Grid.Row="0" Grid.Column="0" >
+            <fluent:RibbonTabItem Header="工具" >
+                <fluent:RibbonGroupBox Header="基本图形">
+                    <fluent:Button Header="直线" x:Name="LineBtn" Click="LineBtn_Click" LargeIcon="Resources/Line Shape.png"  />
+                    <fluent:Button Header="多线段" x:Name="PLineBtn" LargeIcon="Resources/PLine Shape.png" Click="PLineBtn_Click"></fluent:Button>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="填充图形">
+                    <fluent:Button Header="闭合区域" x:Name="PolygonBtn" LargeIcon="Resources/Polygon Shape.png" Click="PolygonBtn_Click"></fluent:Button>
+                    <fluent:Button Header="矩形" x:Name="RectangleBtn" LargeIcon="Resources/Rectangle Shape.png" Click="RectangleBtn_Click" ></fluent:Button>
+                    <fluent:Button Header="圆形" x:Name="CircleBtn" LargeIcon="Resources/Circle Shape.png" Click="CircleBtn_Click" ></fluent:Button>
+                    <fluent:Button Header="椭圆" x:Name="EllipseBtn" LargeIcon="Resources/Ellipse Shape.png" Click="EllipseBtn_Click"></fluent:Button>
+                    <fluent:Button Header="弧形" x:Name="ArcBtn" LargeIcon="Resources/Arc Shape.png" Click="ArcBtn_Click"></fluent:Button>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="建筑类型">
+                    <fluent:DropDownButton Header="墙" x:Name="WallBtn" LargeIcon="Resources/Wall Shape.png"  >
+                        <fluent:Button Header="常规墙" LargeIcon="Resources/NWall.jpg" Click="NWallBtn_Click"></fluent:Button>
+                        <fluent:Button Header="龙骨墙" LargeIcon="Resources/CWall.jpg" Click="CWallBtn_Click"></fluent:Button>
+                    </fluent:DropDownButton>
+                    <fluent:Button Header="楼板" x:Name="FloorBtn" LargeIcon="Resources/Floor.png" Click="FloorBtn_Click"></fluent:Button>
+                    <fluent:Button Header="梁" x:Name="BeamBtn" LargeIcon="Resources/Beam Shape.png"  Click="BeamBtn_Click"></fluent:Button>
+                    <fluent:Button Header="钢梁" x:Name="SteelBtn" LargeIcon="Resources/Steel beam.png"  Click="SteelBtn_Click"></fluent:Button>
+                    <fluent:Button Header="钢梁支撑" x:Name="SteelSupportBtn"  Click="SteelSupportBtn_Click"></fluent:Button>
+
+                    <fluent:DropDownButton Header="柱子"  x:Name="ColumnBtn" LargeIcon="Resources/Column Shape.png" >
+                        <fluent:Button Header="圆柱" x:Name="CircleColumnBtn" LargeIcon="Resources/CircleColumn.png" Click="CircleColumnBtn_Click"></fluent:Button>
+                        <fluent:Button Header="方柱" x:Name="SquareColumnBtn" LargeIcon="Resources/SquareColumn.png" Click="SquareColumnBtn_Click"></fluent:Button>
+                        <fluent:Button Header="钢柱" x:Name="SteelColumnBtn" LargeIcon="Resources/sectionI.png" Click="SteelColumnBtn_Click"></fluent:Button>
+                    </fluent:DropDownButton>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="辅助">
+                    <fluent:Button Header="测量线" x:Name="MeasureBtn" LargeIcon="Resources/Tape Measure.png" Click="MeasureBtn_Click"></fluent:Button>
+                    <fluent:Button Header="标尺线" x:Name="StaffBtn" LargeIcon="Resources/Rule Shape.jpg" Click="StaffBtn_Click"></fluent:Button>
+                    <fluent:Button Header="文字" x:Name="TextBtn" LargeIcon="Resources/Text Shape.png"  Click="TextBtn_Click"></fluent:Button>
+                    <fluent:Button Header="引线" x:Name="LegwireBtn" LargeIcon="Resources/Index Shape.png" Click="LegwireBtn_Click" ></fluent:Button>
+                    <fluent:Button Header="图片" x:Name="ImageBtn" LargeIcon="Resources/Index Shape.png" Click="ImageBtn_Click" ></fluent:Button>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="常规">
+                    <fluent:Button Header="移动" x:Name="MoveBtn" LargeIcon="Resources/Move Shape.png"  Click="MoveBtn_Click"></fluent:Button>
+                    <fluent:Button Header="复制" x:Name="CopyBtn" LargeIcon="Resources/Copy Time.png" Click="CopyBtn_Click"></fluent:Button>
+                    <fluent:Button Header="镜像" x:Name="MirrorBtn" LargeIcon="Resources/Mirror.png" Click="MirrorBtn_Click"></fluent:Button>
+                    <fluent:Button Header="旋转" x:Name="RotateBtn" LargeIcon="Resources/Rotate.png" Click="RotateBtn_Click" ></fluent:Button>
+                    <fluent:Button Header="对齐" x:Name="AlignBtn" LargeIcon="Resources/Align.png" Click="AlignBtn_Click"></fluent:Button>
+                    <fluent:Button Header="阵列" x:Name="ArrayBtn" LargeIcon="Resources/Array.png"  Click="ArrayBtn_Click"></fluent:Button>
+                    <fluent:Button Header="翻转" x:Name="ReversalBtn" LargeIcon="Resources/Reverse.png" Click="ReversalBtn_Click"></fluent:Button>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="样式">
+                    <fluent:SplitButton x:Name="LineWidthBtn" LargeIcon="Resources/line_width.png" Icon="Resources/line_width.png"  Size="Large" Header="线宽"  MenuItem.Click="LineWidthBtn_Click">
+                        <fluent:MenuItem Header="细线" Icon="Resources/Line1.png" Tag="1"></fluent:MenuItem>
+                        <fluent:MenuItem Header="中线" Icon="Resources/Line5.png" Tag="2"></fluent:MenuItem>
+                        <fluent:MenuItem Header="粗线" Icon="Resources/Line10.png" Tag="4"></fluent:MenuItem>
+                        <fluent:MenuItem Header="重粗线" Icon="Resources/Line20.png" Tag="8"></fluent:MenuItem>
+                    </fluent:SplitButton>
+                    <fluent:SplitButton LargeIcon="Resources/LineStyle.png" Icon="Resources/Line Shape.png" Header="线样式">
+                        <fluent:MenuItem Header="实线" Icon="Resources/Solid.png"></fluent:MenuItem>
+                        <fluent:MenuItem Header="虚线" Icon="Resources/Dashed.png"></fluent:MenuItem>
+                    </fluent:SplitButton>
+                    <fluent:SplitButton   Background="Red" Header="线颜色">
+                        <fluent:SplitButton.LargeIcon>
+                            <Rectangle Height="32"  Width="32"  HorizontalAlignment="Center">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush  Color="{Binding ElementName=LineColorSel, Path=SelectedColor}"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </fluent:SplitButton.LargeIcon>
+                        <fluent:ColorGallery SelectedColor="Black"  AllowDrop="True" x:Name="LineColorSel" SelectedColorChanged="LineColorSel_SelectedColorChanged"></fluent:ColorGallery>
+                    </fluent:SplitButton>
+                    <fluent:SplitButton  Header="填充色">
+                        <fluent:SplitButton.LargeIcon>
+                            <Rectangle Height="32"  Width="32"  HorizontalAlignment="Center">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush  Color="{Binding ElementName=FillColorSel, Path=SelectedColor}"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </fluent:SplitButton.LargeIcon>
+                        <fluent:ColorGallery x:Name="FillColorSel" SelectedColor="Transparent"  AllowDrop="True" SelectedColorChanged="FillColorSel_SelectedColorChanged" ></fluent:ColorGallery>
+                    </fluent:SplitButton>
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox KeyTip="F"
+                                       x:Name="Font"
+                                       Header="字体"
+                                       LauncherKeys="NF">
+                    <fluent:RibbonToolBar>
+                        <fluent:RibbonToolBar.LayoutDefinitions>
+                            <fluent:RibbonToolBarLayoutDefinition Size="Large">
+                                <fluent:RibbonToolBarRow>
+                                    <fluent:RibbonToolBarControlDefinition Target="comboBoxFontName" Width="75" />
+                                    <fluent:RibbonToolBarControlDefinition Target="comboBoxFontSize" Width="45" />
+                                </fluent:RibbonToolBarRow>
+                                <fluent:RibbonToolBarRow>
+                                    <fluent:RibbonToolBarControlGroupDefinition>
+                                        <fluent:RibbonToolBarControlDefinition  Target="buttonTextEffects" />
+                                        <fluent:RibbonToolBarControlDefinition  Target="buttonTextHighlightColor" />
+                                        <fluent:RibbonToolBarControlDefinition  Target="buttonFontColor" />
+                                    </fluent:RibbonToolBarControlGroupDefinition>
+                                </fluent:RibbonToolBarRow>
+                            </fluent:RibbonToolBarLayoutDefinition>
+                        </fluent:RibbonToolBar.LayoutDefinitions>
+                        <fluent:ComboBox x:Name="comboBoxFontName"
+                                         MinWidth="40"
+                                         Height="22"
+                                         BorderBrush="Gainsboro"
+                                         Foreground="#FF222222"
+                                         DisplayMemberPath="Text"
+                                         IsTextSearchEnabled="True"
+                                         ResizeMode="Vertical"
+                                         KeyTip="FF"
+                                         SizeDefinition="Small"
+                                         ScrollViewer.CanContentScroll="False"
+                                         SelectedIndex="0">
+                            <fluent:ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <fluent:GalleryPanel GroupBy="Tag"  ItemContainerGenerator="{Binding ItemContainerGenerator, RelativeSource={RelativeSource FindAncestor, AncestorType=ComboBox}}" />
+                                </ItemsPanelTemplate>
+                            </fluent:ComboBox.ItemsPanel>
+                            <TextBlock Text="Arial"
+                                       HorizontalAlignment="Stretch"
+                                       Tag="Theme Fonts" />
+                            <TextBlock Text="Tahoma"
+                                       Tag="Theme Fonts" />
+                            <TextBlock Text="Tahoma"
+                                       Tag="Recent Used Fonts" />
+                            <TextBlock Text="Arial"
+                                       Tag="AllFonts" />
+                            <TextBlock Text="Segoe UI"
+                                       Tag="AllFonts"
+                                       x:Name="segoeFont" />
+                            <TextBlock Text="Tahoma"
+                                       Tag="AllFonts" />
+                            <TextBlock Text="Webdings"
+                                       Tag="AllFonts" />
+                            <TextBlock Text="Winding"
+                                       Tag="AllFonts" />
+                        </fluent:ComboBox>
+                        <fluent:ComboBox x:Name="comboBoxFontSize"
+                                         Width="49"
+                                         HorizontalAlignment="Left"
+                                         Height="22"
+                                         SelectedIndex="1"
+                                         BorderBrush="Gainsboro"
+                                         Foreground="#FF222222"
+                                         Text="12"
+                                         DisplayMemberPath="Text"
+                                         IsEditable="False"
+                                         SizeDefinition="Small"
+                                         ResizeMode="Vertical"
+                                         KeyTip="FS">
+                            <TextBlock Text="7" />
+                            <TextBlock Text="8" />
+                            <TextBlock Text="9" />
+                            <TextBlock Text="10" />
+                            <TextBlock Text="11" />
+                            <TextBlock Text="12" />
+                            <TextBlock Text="14" />
+                            <TextBlock Text="16" />
+                            <TextBlock Text="18" />
+                            <TextBlock Text="20" />
+                            <TextBlock Text="22" />
+                            <TextBlock Text="24" />
+                            <TextBlock Text="28" />
+                            <TextBlock Text="32" />
+                            <TextBlock Text="36" />
+                            <TextBlock Text="48" />
+                            <TextBlock Text="72" />
+                        </fluent:ComboBox>
+                        <fluent:DropDownButton x:Name="buttonTextEffects"
+                                               HorizontalAlignment="Left"
+                                               SizeDefinition="Small">
+                            <fluent:DropDownButton.Icon>
+                                <Grid>
+                                    <Image Source="Resources/TextEffects.png" Width="16" Height="16"  />
+                                    <Rectangle VerticalAlignment="Bottom"
+                                               Height="2"
+                                               Width="16"
+                                               HorizontalAlignment="Center">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="{Binding ColorViewModel.StandardColor}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                            </fluent:DropDownButton.Icon>
+                            <fluent:ColorGallery Mode="StandardColors"
+                                                 SelectedColor="{Binding ColorViewModel.StandardColor, Mode=TwoWay}" />
+                            <fluent:MenuItem Icon="Resources/Pink.png"
+                                             Header="Custom MenuItem" />
+                        </fluent:DropDownButton>
+                        <fluent:DropDownButton x:Name="buttonTextHighlightColor" Width="45" 
+                                               HorizontalAlignment="Left" HorizontalContentAlignment="Center"
+                                               SizeDefinition="Small">
+                            <fluent:DropDownButton.Icon>
+                                <Grid>
+                                    <Image Source="Resources/TextHighlightColor.png"
+                                           Width="16"
+                                           Height="16" />
+                                    <Rectangle VerticalAlignment="Bottom"
+                                               Height="4"
+                                               Width="16"
+                                               HorizontalAlignment="Center">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="{Binding ColorViewModel.HighlightColor}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                            </fluent:DropDownButton.Icon>
+                            <fluent:ColorGallery Mode="HighlightColors"
+                                                 SelectedColor="{Binding ColorViewModel.HighlightColor, Mode=TwoWay}"
+                                                 IsAutomaticColorButtonVisible="False" />
+                        </fluent:DropDownButton>
+                        <fluent:DropDownButton x:Name="buttonFontColor"
+                                               HorizontalAlignment="Left"
+                                               SizeDefinition="Small"
+                                               MaxDropDownHeight="500">
+                            <fluent:DropDownButton.ToolTip>
+                                <fluent:ScreenTip Text="Test-ScreenTip to test wrong ToolTip appearence when Popup is open" />
+                            </fluent:DropDownButton.ToolTip>
+                            <fluent:DropDownButton.Icon>
+                                <Grid>
+                                    <Image Source="Resources/FontColor.png"
+                                           Width="16"
+                                           Height="16"
+                                           SnapsToDevicePixels="True" />
+                                    <Rectangle VerticalAlignment="Bottom"
+                                               Height="4"
+                                               Width="16"
+                                               HorizontalAlignment="Center">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="{Binding ColorViewModel.ThemeColor}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                            </fluent:DropDownButton.Icon>
+                            <fluent:ColorGallery ThemeColorsSource="{Binding ColorViewModel.ThemeColors}"
+                                                 SelectedColor="{Binding ColorViewModel.ThemeColor, Mode=TwoWay}"
+                                                 Mode="ThemeColors"
+                                                 StandardColorGridRows="3"
+                                                 Columns="10"
+                                                 ThemeColorGridRows="5"
+                                                 IsNoColorButtonVisible="True" />
+                        </fluent:DropDownButton>
+                    </fluent:RibbonToolBar>
+                </fluent:RibbonGroupBox>
+            </fluent:RibbonTabItem>
+        </fluent:Ribbon>
+        <drawingKernel:Explorer Grid.Row="1" Grid.Column="0" x:Name="drawingKernel" HorizontalAlignment="Stretch"    VerticalAlignment="Stretch" ></drawingKernel:Explorer>
+        <fluent:StatusBar Grid.Row="2" FontSize="14" Grid.Column="0" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+            <fluent:StatusBarItem  Foreground="White" Margin="5,0" Content="悉道二维绘制工具:" HorizontalAlignment="Left"  VerticalContentAlignment="Center"/>
+            <fluent:StatusBarItem  x:Name="DrawTipLab" Foreground="White" Content="提示" Margin="5,0,0,0"  HorizontalAlignment="Left"  VerticalContentAlignment="Center"/>
+            <fluent:StatusBarItem Title="AlbertCAD" Foreground="White"  HorizontalAlignment="Right" >
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton Content="端点" Margin="0,0,5,0" x:Name="EndPointCatchBtn" BorderThickness="0"   Click="EndPointCatchBtn_Click"></ToggleButton>
+                    <ToggleButton Content="交点" Margin="0,0,5,0" x:Name="InjectCatchBtn" BorderThickness="0" Click="InjectCatchBtn_Click"></ToggleButton>
+                    <ToggleButton Content="正交" Margin="0,0,5,0"  x:Name="ShiftCatchBtn" BorderThickness="0" Click="ShiftCatchBtn_Click"></ToggleButton>
+                    <ToggleButton Content="中心" Margin="0,0,0,0" x:Name="CentralCatchBtn" BorderThickness="0"  Click="CentralCatchBtn_Click"></ToggleButton>
+                </StackPanel>
+            </fluent:StatusBarItem>
+        </fluent:StatusBar>
+    </Grid>
+</Window>
